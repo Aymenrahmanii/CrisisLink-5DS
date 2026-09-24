@@ -1,1 +1,29 @@
+# Secrets (API keys for Groq, Qdrant, Telegram, Hugging Face)
 .env
+.env.*
+!.env.example
+
+# Confidential course documents (repo is public)
+CrisisLink_Team_Playbook.pdf
+CrisisLink_Week1_Milestone_Pack.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Local data / caches
+.n8n/
+qdrant_storage/
+*.log
+
+# Editors & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
