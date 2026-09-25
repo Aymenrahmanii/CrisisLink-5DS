@@ -1,0 +1,50 @@
+{
+ "V1|test_media/imagess/10-15/10-15-1.jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 45,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/10-15.jpg": {
+  "is_flood": true,
+  "anchor": "human leg",
+  "estimated_depth_cm": 45,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/images (1).jpg": {
+  "is_flood": true,
+  "anchor": "human leg",
+  "estimated_depth_cm": 20,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/images (2).jpg": {
+  "is_flood": true,
+  "anchor": "human leg",
+  "estimated_depth_cm": 25,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/images (3).jpg": {
+  "is_flood": true,
+  "anchor": "human ankle",
+  "estimated_depth_cm": 15,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/10-15/images (4).jpg": {
+  "is_flood": true,
+  "anchor": "human foot",
+  "estimated_depth_cm": 15,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/images (5).jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 30,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/images (6).jpg": {
+  "is_flood": true,
+  "anchor": "pedestrian leg",
+  "estimated_depth_cm": 5,
+  "confidence": "medium"
+ }
+}

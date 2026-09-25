@@ -1,0 +1,25 @@
+{
+  "description": "Retrieval test set. A retrieved chunk is relevant when it contains ALL strings of at least one entry in 'relevant' (case-insensitive). This checks that the chunk holds a complete answer, e.g. a tier AND its asset in the same table row.",
+  "queries": [
+    {"id": "q01", "lang": "en", "query": "What rescue asset is needed for 60 cm of floodwater?", "relevant": [["p2", "high-clearance 4x4"]]},
+    {"id": "q02", "lang": "en", "query": "Which priority tier applies when the water is 130 cm deep?", "relevant": [["p1", "above 100 cm"], ["h4 to h6", "p1"]]},
+    {"id": "q03", "lang": "en", "query": "How deep does moving water need to be to knock an adult off their feet?", "relevant": [["15 cm", "knock"]]},
+    {"id": "q04", "lang": "en", "query": "At what water depth can a car start to float?", "relevant": [["30 cm", "float a car"]]},
+    {"id": "q05", "lang": "en", "query": "What does flood hazard class H3 mean and what is its depth limit?", "relevant": [["h3", "children and the elderly", "1.2 m"]]},
+    {"id": "q06", "lang": "en", "query": "Which hazard class means all building types are vulnerable to failure?", "relevant": [["h6", "all building types considered vulnerable to failure"]]},
+    {"id": "q07", "lang": "en", "query": "What should a driver do if their car is trapped in rapidly moving water?", "relevant": [["stay inside your car", "roof"]]},
+    {"id": "q08", "lang": "en", "query": "What should people do if they are trapped inside a building during a flood?", "relevant": [["highest level", "trapped in a building"]]},
+    {"id": "q09", "lang": "en", "query": "An elderly woman is trapped at home with 40 cm of water. What priority is it?", "relevant": [["p1", "elderly"]]},
+    {"id": "q10", "lang": "en", "query": "The photo shows 10 cm of water but the caller says they are trapped at chest level. What should happen?", "relevant": [["human operator", "contradict"]]},
+    {"id": "q11", "lang": "en", "query": "What is the civil protection emergency number in Tunisia?", "relevant": [["198"]]},
+    {"id": "q12", "lang": "en", "query": "What is the order of water rescue methods from lowest to highest risk?", "relevant": [["talk", "reach", "throw", "row"]]},
+    {"id": "q13", "lang": "en", "query": "How should rescuers reach occupants of a vehicle trapped in flash flood water?", "relevant": [["high water vehicles", "watercraft"]]},
+    {"id": "q14", "lang": "en", "query": "Is it safe to enter a room where water covers the electrical outlets?", "relevant": [["electrical outlets"]]},
+    {"id": "q15", "lang": "en", "query": "How high is a car wheel hub when estimating water depth from a photo?", "relevant": [["wheel hub", "30-35 cm"]]},
+    {"id": "q16", "lang": "fr", "query": "Quel véhicule de secours envoyer pour 70 cm d'eau ?", "relevant": [["p2", "high-clearance 4x4"]]},
+    {"id": "q17", "lang": "fr", "query": "Que recommande la Protection civile tunisienne en cas de fortes pluies ?", "relevant": [["oueds"]]},
+    {"id": "q18", "lang": "fr", "query": "Faut-il un bateau quand l'eau dépasse un mètre ?", "relevant": [["p1", "zodiac"]]},
+    {"id": "q19", "lang": "ar", "query": "المية وصلت للصدر، شنوة الأولوية؟", "relevant": [["p1", "above 100 cm"], ["chest", "130 cm"]]},
+    {"id": "q20", "lang": "ar", "query": "شنوة نعمل كان الكرهبة محصورة في الماء؟", "relevant": [["stay inside your car"], ["high water vehicles"]]}
+  ]
+}
