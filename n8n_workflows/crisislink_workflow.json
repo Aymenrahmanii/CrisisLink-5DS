@@ -199,12 +199,9 @@
     },
     {
       "parameters": {
-        "mode": "rules",
         "rules": {
           "values": [
             {
-              "renameOutput": true,
-              "outputKey": "Photo",
               "conditions": {
                 "options": {
                   "caseSensitive": false,
@@ -224,11 +221,11 @@
                     }
                   }
                 ]
-              }
+              },
+              "renameOutput": true,
+              "outputKey": "Photo"
             },
             {
-              "renameOutput": true,
-              "outputKey": "Voice",
               "conditions": {
                 "options": {
                   "caseSensitive": false,
@@ -248,11 +245,11 @@
                     }
                   }
                 ]
-              }
+              },
+              "renameOutput": true,
+              "outputKey": "Voice"
             },
             {
-              "renameOutput": true,
-              "outputKey": "Text",
               "conditions": {
                 "options": {
                   "caseSensitive": false,
@@ -272,11 +269,11 @@
                     }
                   }
                 ]
-              }
+              },
+              "renameOutput": true,
+              "outputKey": "Text"
             },
             {
-              "renameOutput": true,
-              "outputKey": "Location",
               "conditions": {
                 "options": {
                   "caseSensitive": false,
@@ -296,11 +293,11 @@
                     }
                   }
                 ]
-              }
+              },
+              "renameOutput": true,
+              "outputKey": "Location"
             },
             {
-              "renameOutput": true,
-              "outputKey": "Ignored edit",
               "conditions": {
                 "options": {
                   "caseSensitive": false,
@@ -320,11 +317,11 @@
                     }
                   }
                 ]
-              }
+              },
+              "renameOutput": true,
+              "outputKey": "Ignored edit"
             },
             {
-              "renameOutput": true,
-              "outputKey": "New incident (/new)",
               "conditions": {
                 "options": {
                   "caseSensitive": false,
@@ -344,7 +341,9 @@
                     }
                   }
                 ]
-              }
+              },
+              "renameOutput": true,
+              "outputKey": "New incident (/new)"
             }
           ]
         },
@@ -356,8 +355,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        -1168,
-        304
+        -1080,
+        300
       ],
       "id": "c040e6e9-bdc8-425b-99b5-d292d4ee8131",
       "name": "Route by Media"
@@ -956,8 +955,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -900,
-        900
+        -800,
+        736
       ],
       "webhookId": "156a6cea-10b6-406e-bcba-362ff25d7014",
       "retryOnFail": true,
@@ -1327,8 +1326,7 @@
             }
           ]
         },
-        "options": {},
-        "notes": "Ask for GPS once per incident (first report only)"
+        "options": {}
       },
       "id": "67e67f5a-8ac2-41fd-9794-4040cd995bef",
       "name": "Location Missing?",
@@ -1404,8 +1402,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -896,
-        -320
+        -1270,
+        80
       ],
       "retryOnFail": true,
       "maxTries": 3,
@@ -1540,7 +1538,6 @@
           "conditions": [
             {
               "keyName": "chat_id",
-              "condition": "eq",
               "keyValue": "={{ $json.chat_id }}"
             },
             {
@@ -1585,16 +1582,7 @@
       "notes": "Member 6 - incident session: photo + voice from one citizen become ONE incident"
     },
     {
-      "id": "c77b99a4-7a6b-4d80-b22c-e20ee59ef5f5",
-      "name": "Close Open Incident",
-      "type": "n8n-nodes-base.dataTable",
-      "typeVersion": 1.1,
-      "position": [
-        -900,
-        1320
-      ],
       "parameters": {
-        "resource": "row",
         "operation": "update",
         "dataTableId": {
           "__rl": true,
@@ -1607,7 +1595,6 @@
           "conditions": [
             {
               "keyName": "chat_id",
-              "condition": "eq",
               "keyValue": "={{ $json.chat_id }}"
             },
             {
@@ -1637,21 +1624,19 @@
         },
         "options": {}
       },
-      "notes": "/new: the chat's open incident is closed, so the next report starts a fresh one",
-      "alwaysOutputData": true
+      "id": "c77b99a4-7a6b-4d80-b22c-e20ee59ef5f5",
+      "name": "Close Open Incident",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -1312,
+        1392
+      ],
+      "alwaysOutputData": true,
+      "notes": "/new: the chat's open incident is closed, so the next report starts a fresh one"
     },
     {
-      "id": "8fbf8454-c335-423b-99f1-f554ae292521",
-      "name": "Confirm New Incident",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        -680,
-        1320
-      ],
       "parameters": {
-        "resource": "message",
-        "operation": "sendMessage",
         "chatId": "={{ $('Normalize Input').first().json.chat_id }}",
         "text": "🆕 <b>New report started.</b> Send a photo of the water, a voice note or a text describing the emergency.\nابعث تصويرة، ميساج صوتي ولا نص يوصف الحالة.",
         "additionalFields": {
@@ -1659,12 +1644,20 @@
           "parse_mode": "HTML"
         }
       },
-      "onError": "continueRegularOutput",
+      "id": "8fbf8454-c335-423b-99f1-f554ae292521",
+      "name": "Confirm New Incident",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -864,
+        1392
+      ],
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
       "executeOnce": true,
       "webhookId": "5e32ba3c-2877-448a-9ed0-40ba05ec16a7",
+      "onError": "continueRegularOutput",
       "credentials": {
         "telegramApi": {
           "id": "TD9NIys0aw9ptA4p",
@@ -1673,14 +1666,6 @@
       }
     },
     {
-      "id": "7ee84d2f-cd5e-4dde-8805-0cb837eda3c5",
-      "name": "Has Caption?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        0,
-        0
-      ],
       "parameters": {
         "conditions": {
           "options": {
@@ -1705,19 +1690,18 @@
         },
         "options": {}
       },
+      "id": "7ee84d2f-cd5e-4dde-8805-0cb837eda3c5",
+      "name": "Has Caption?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        144,
+        -176
+      ],
       "notes": "A photo caption is also a distress message: send it to the extractor"
     },
     {
-      "id": "bcf8d44b-f3ac-432c-958d-34d54b26b586",
-      "name": "Caption as Transcript",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        0,
-        180
-      ],
       "parameters": {
-        "mode": "manual",
         "assignments": {
           "assignments": [
             {
@@ -1735,7 +1719,83 @@
           ]
         },
         "options": {}
-      }
+      },
+      "id": "bcf8d44b-f3ac-432c-958d-34d54b26b586",
+      "name": "Caption as Transcript",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        160,
+        112
+      ]
+    },
+    {
+      "id": "3641cfc8-23ae-4978-93e7-e286f0151bef",
+      "name": "Needs Ack?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1270,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "combinator": "or",
+          "conditions": [
+            {
+              "id": "ack-photo",
+              "leftValue": "={{ $json.input_type }}",
+              "rightValue": "photo",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "ack-voice",
+              "leftValue": "={{ $json.input_type }}",
+              "rightValue": "voice",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "ack-text",
+              "leftValue": "={{ $json.input_type }}",
+              "rightValue": "text",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": "Only reports (photo / voice / text) get the instant receipt"
+    },
+    {
+      "id": "995a5176-63c7-4e91-b7a7-a15d2190e611",
+      "name": "Restore Intake Item",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1060,
+        80
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Acknowledge Report returned Telegram's API response; the router needs the intake contract again\nreturn $('Normalize Input').all().map((item, i) => ({ json: item.json, pairedItem: { item: i } }));"
+      },
+      "notes": "The Telegram node replaced the item with its API response; hand the intake contract back to the router"
     }
   ],
   "connections": {
@@ -1761,27 +1821,11 @@
         ]
       ]
     },
-    "Normalize Input": {
-      "main": [
-        [
-          {
-            "node": "Route by Media",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Route by Media": {
       "main": [
         [
           {
             "node": "Download Photo",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Acknowledge Report",
             "type": "main",
             "index": 0
           }
@@ -1791,21 +1835,11 @@
             "node": "Download Voice",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Acknowledge Report",
-            "type": "main",
-            "index": 0
           }
         ],
         [
           {
             "node": "Text as Transcript",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Acknowledge Report",
             "type": "main",
             "index": 0
           }
@@ -2223,6 +2257,57 @@
         [
           {
             "node": "Build Extraction Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Input": {
+      "main": [
+        [
+          {
+            "node": "Needs Ack?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Needs Ack?": {
+      "main": [
+        [
+          {
+            "node": "Acknowledge Report",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Route by Media",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Acknowledge Report": {
+      "main": [
+        [
+          {
+            "node": "Restore Intake Item",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Restore Intake Item": {
+      "main": [
+        [
+          {
+            "node": "Route by Media",
             "type": "main",
             "index": 0
           }
