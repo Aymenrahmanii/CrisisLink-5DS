@@ -17,6 +17,7 @@ import base64
 import json
 import os
 import re
+import sys
 import time
 from pathlib import Path
 
@@ -54,10 +55,15 @@ def tier(depth):
 CACHE = ROOT / "eval" / "results" / "vision_cache.json"
 
 
+CACHED_ONLY = "--cached-only" in sys.argv  # build the report from cached answers without calling the API
+
+
 def ask_cached(version: str, prompt: str, image: Path) -> dict:
     """Answers are cached per (prompt version, image) so an interrupted run resumes where it stopped."""
     cache = json.loads(CACHE.read_text(encoding="utf-8")) if CACHE.exists() else {}
     key = f"{version}|{image.relative_to(ROOT).as_posix()}"
+    if key not in cache and CACHED_ONLY:
+        return {"_missing": True}
     if key not in cache:
         answer = ask(prompt, image)
         if answer.get("_rate_limited"):
@@ -123,13 +129,16 @@ def num(x):
 def main():
     images = [(p, rng, t) for pattern, rng, t in LABELS for p in sorted(ROOT.glob(pattern))]
     print(f"{len(images)} labelled images, model {MODEL}")
-    rows, summary = [], {}
+    rows, summary, missing = [], {}, []
 
     for version, path in PROMPTS.items():
         prompt = path.read_text(encoding="utf-8")
         stats = {"n": 0, "parsed": 0, "estimated": 0, "in_range": 0, "under": 0, "tier_ok": 0, "danger": 0, "err": []}
         for img, (lo, hi), expected in images:
             out = ask_cached(version, prompt, img)
+            if out.get("_missing"):
+                missing.append(f"{version} {img.name}")
+                continue
             d = None if out.get("is_flood") is False else num(out.get("estimated_depth_cm"))
             predicted = tier(d)
             stats["n"] += 1
@@ -165,6 +174,8 @@ def main():
           "Tiers use the Safety Guardrail thresholds (P1 > 100 cm, P2 >= 50, P3 >= 20, P4 below).", "",
           "| Prompt | JSON valid | Depth given | In labelled range | Mean error (cm) | Underestimates | Tier accuracy | Dangerous misses (P1 graded P3/P4/none) |",
           "|---|---|---|---|---|---|---|---|"]
+    if missing:
+        md[2] += f" **Incomplete: {len(missing)} answer(s) not yet obtained (daily API quota): {', '.join(missing)}.**"
     for v, s in summary.items():
         md.append(f"| {v} | {s['json_valid']:.0%} | {s['depth_given']:.0%} | {s['in_range']:.0%} | {s['mean_error_cm']} | {s['underestimates']:.0%} | {s['tier_accuracy']:.0%} | {s['dangerous_misses']} |")
     md += ["", "## Per image", "", "| Prompt | Image | Label (cm) | Expected | Estimate (cm) | Predicted | Confidence | Anchor |", "|---|---|---|---|---|---|---|---|"]

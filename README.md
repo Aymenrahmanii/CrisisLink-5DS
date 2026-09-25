@@ -7,16 +7,22 @@ Esprit 5DS - Advanced Deep Learning final project.
 ## Architecture
 
 ```
-Telegram ──> Normalize Input ──> Route by Media ─┬─ photo ──> Vision Agent (Qwen 3.8 27B, depth from reference objects)
-                                                 ├─ voice ──> Gemini 3.5 Transcribe ─(fails)─> Whisper large-v3
-                                                 │                 └──> Distress Extractor (gpt-oss-120b, few-shot)
-                                                 ├─ text  ──────────────> Distress Extractor
-                                                 ├─ GPS   ──> save location, attach to open incidents
-                                                 └─ other ──> "please send a photo / voice / text"
-Vision JSON / Audio JSON ──> Incident Fusion (same chat, < 30 min = one incident)
-    ──> Master Triage Agent (gpt-oss-120b + RAG tool on Qdrant) ──> Safety Guardrail (deterministic rules)
-    ──> attach GPS ──> Dispatcher board (n8n Data Table, upsert) ──> Telegram ticket (+ "share location" button)
+Telegram ──> Normalize Input ──> "report received" ──> Route by Media (deterministic router)
+   ├─ photo ──> VISION AGENT (Qwen 3.8 27B, Gemini Flash-Lite fallback)
+   │              tool: lookup_reference_height          (+ photo caption ──> Distress Agent)
+   ├─ voice ──> Gemini 3.5 Transcribe ─(fails)─> Whisper large-v3 ──┐
+   ├─ text  ────────────────────────────────────────────────────────┴──> DISTRESS AGENT (gpt-oss-120b)
+   │                                                     tools: convert_level_to_cm, ask_citizen (1 follow-up question)
+   ├─ GPS   ──> save location, attach to open incidents
+   ├─ /new  ──> close the open incident
+   └─ other ──> "please send a photo / voice / text"
+Vision JSON / Distress JSON ──> Incident Fusion (same chat, < 30 min = one incident)
+    ──> MASTER TRIAGE AGENT (gpt-oss-120b, tool: Search Flood Protocols = RAG on Qdrant)
+    ──> Safety Guardrail (deterministic rules) ──> attach GPS
+    ──> Dispatcher board (n8n Data Table, upsert) ──> Telegram ticket (+ "share location" button)
 ```
+
+Three agents, each with its own model and tools: two specialist workers (Vision, Distress) and the Master Triage orchestrator. Routing and transcription stay deterministic on purpose: every photo must be analysed, and n8n cannot pass images through agent-to-agent tool calls.
 
 ## Repository layout
 

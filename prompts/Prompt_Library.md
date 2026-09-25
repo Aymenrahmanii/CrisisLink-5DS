@@ -4,12 +4,14 @@ Every prompt in the pipeline, its role, the techniques it uses, the failures we 
 
 | # | Prompt | Node | Model | Current version | Canonical file |
 |---|---|---|---|---|---|
-| 1 | Vision Inspector | Build Vision Request | Groq `qwen/qwen3.8-27b` | V2 | `vision_v2.txt` |
+| 1 | Vision Agent (formerly Vision Inspector) | Vision Agent (system message) | Groq `qwen/qwen3.8-27b`, fallback Google `gemini-3.5-flash-lite` | V3 (agent) | `vision_v3_agent.txt` (V1, V2: `vision_v1.txt`, `vision_v2.txt`) |
 | 2 | Transcription | Build Gemini Request | Google `gemini-3.5-transcribe` (fallback: Groq `whisper-large-v3`) | V2 | in the node |
-| 3 | Distress Extractor | Build Extraction Request | Groq `openai/gpt-oss-120b` | V4 | `extractor_v4.txt` + `extractor_v4_fewshot.json` |
+| 3 | Distress Agent (formerly Distress Extractor) | Distress Agent (system message) | Groq `openai/gpt-oss-120b` | V5 (agent) | `distress_agent_v5.txt` (V2-V4: `extractor_v*.txt`) |
 | 4 | Master Triage Agent | Master Triage Agent (system message) | Groq `openai/gpt-oss-120b` + RAG tool | V3 | in the node |
 
 The Safety Guardrail is deliberately **not** a prompt: it is deterministic code that re-checks every LLM decision (section 5).
+
+**From single calls to agents.** Up to V2 (vision) and V4 (distress) the specialists were single LLM calls. V3 / V5 turn them into tool-using agents: the Vision Agent looks up anchor heights with `lookup_reference_height` instead of relying on a table in its prompt, and the Distress Agent converts described levels with `convert_level_to_cm` and may ask the citizen one follow-up question with `ask_citizen`. The prompt engineering challenges this created are in sections 1 and 3 and in the failure log (section 6).
 
 ---
 
@@ -25,9 +27,24 @@ The Safety Guardrail is deliberately **not** a prompt: it is deterministic code 
 - Execution #48: waterline "below the wheel hub" estimated at **25 cm**; a wheel hub sits at 30-35 cm, and our 40 cm reference photo was estimated at 15 cm in an early test. Depth is systematically under-estimated.
 - Adversarial ideas from card 4.1 (swimming pool, blurry night photo) are handled by the V2 "not a flood" list and the `low` confidence rule, which the guardrail turns into a human review.
 
-**Before/after on 29 labelled photos** (`eval/vision_eval.py`, results in `eval/results/vision_eval.md`): **incomplete.** The run stopped after 8 of 58 calls because the Groq free tier allows 200,000 vision tokens per day and each photo costs about 2,000-3,000 tokens; the run also starved the live demo of quota (execution #62, see section 6). Answers are cached, so re-running the script resumes where it stopped; use `groq_eval_api_key` (a separate account) so the demo key is not affected.
+**Before/after on 29 labelled photos** (`eval/vision_eval.py`, `eval/results/vision_eval.md`; same model, `qwen/qwen3.8-27b`). V2 is missing 1 of 29 answers (`03_severe_submerged_120cm.jpg`): both Groq keys hit the 200,000 tokens/day vision limit. Re-running the script completes it from the cache.
 
-Partial V1 results on the 10-15 cm (P4) photos: estimates of 45, 45, 20, 25, 15, 15, 30 and 5 cm. Only 3 of 8 fall inside 10-15 cm and 5 of 8 would be graded P3 instead of P4 (the baseline *over*-estimates shallow water here, while the live photo in execution #48 was *under*-estimated). The V2 anchor table and interval output are designed to reduce this spread; the V1 vs V2 comparison must be completed before the report.
+| Prompt | Depth given | In labelled range | Mean error | Underestimates | Tier accuracy | P1 photos graded P3/P4 |
+|---|---|---|---|---|---|---|
+| V1 (baseline) | 100% | 21% | 15.2 cm | **55%** | 38% | 0 |
+| V2 (CoT + anchors + guardrails) | 96% | 25% | **12.4 cm** | **29%** | 39% | 0 |
+
+What changed and what did not:
+- **Safety improved most**: V2 under-estimates depth about half as often as V1 (29% vs 55%), which is the dangerous direction for triage. This is the effect of the "report the deeper interval" guardrail.
+- **Accuracy improved only a little** (mean error 15 -> 12 cm, in-range 21% -> 25%) and tier accuracy is flat (38% -> 39%): depth from a single photo remains the weakest part of the system. This is why the Safety Guardrail escalates low-confidence vision to a human, and why V3 moved the heights into a tool.
+- V2 returned no depth for one photo (96%), as its guardrail instructs when no anchor is visible; V1 always produced a number, even without a visible anchor.
+- Neither version graded a severe (P1) photo as P3/P4.
+
+**V3: the Vision Agent (tool use).** Same method and guardrails as V2, but the anchor-height table moved out of the prompt into the tool `lookup_reference_height`, which returns heights from one cited source (corpus section 5); the prompt requires a tool call for every anchor ("Never use heights from memory"). Gemini 3.5 Flash-Lite is a fallback model when Qwen fails.
+- Test execution #85 (submerged-car photo, Gemini): the agent called `lookup_reference_height("car roof")` -> 145-160 cm and `lookup_reference_height("window sill")` -> 100 cm, then returned 145-160 cm, estimate 150 cm, confidence high, moving water. The same photo failed completely in live execution #62 (quota).
+- Test execution #86: Qwen was over its daily quota at every step, Gemini answered each step, same result; fallback adds latency (21 s vs 4 s).
+- Failure fixed while building V3 (test #83): Gemini's function-calling API rejected the output schema because of `"type": ["number","null"]` unions. The V3 output schema makes depth fields optional plain numbers instead ("omit if unknown"); the parser maps a missing value to null.
+- Not yet benchmarked on the 29 photos: each agent run costs 2-3 model calls with the image, which the free-tier quota does not allow alongside the V1/V2 benchmark.
 
 ---
 
@@ -71,6 +88,22 @@ Partial V1 results on the 10-15 cm (P4) photos: estimates of 45, 45, 20, 25, 15,
 | V4 | **8/8** | **100%** |
 
 Single runs vary slightly even at temperature 0.1 (V2 scored 5/8 then 6/8), so small differences should not be over-interpreted; the V3 to V4 fixes each target one named failure and both disappeared.
+
+**V5: the Distress Agent (tool use + follow-up question).** V4's rules, lexicon and examples, plus two tools: `convert_level_to_cm` (the body-part / object conversion table moved out of the prompt) and `ask_citizen`, which sends the citizen **one** follow-up question on Telegram when the report does not say whether anyone is trapped or vulnerable. The workflow passes `follow_up_allowed` (false once a question was asked for the open incident), and the answer comes back as a new report that incident fusion merges. The three few-shot examples were rewritten as "call the tool / do not call the tool" demonstrations.
+
+Iterations while building V5 (test workflow executions):
+
+| Test | Input | Result | Change that followed |
+|---|---|---|---|
+| #73 | "Help, the water is rising very fast in our street near the central market" | The agent wrote a good question into a `followup_question` output field but **never called `ask_citizen`**: in production nothing would have been sent | Removed the output field (it gave the model a way out) and stated that only the tool reaches the citizen |
+| #78 | same | Called `ask_citizen`, then **stopped** with "Awaiting the citizen's response..." instead of returning JSON (output-parser error) | Stated that the answer never comes back to the agent and that it must return its JSON immediately |
+| #79 | same | Called `ask_citizen` ("Are you or anyone with you trapped, or are there elderly, children, or injured people with you?") and returned valid JSON | - |
+| #80 | "Venez vite, il y a de l'eau partout dans notre quartier a Ariana" | Asked **in French** ("Etes-vous bloques ou y a-t-il des personnes en danger ?") and returned valid JSON | - |
+| #76 | #73's text with `follow_up_allowed: false` | No question asked | - |
+| #74 | Gemini Derja transcript (water above the car, elderly woman trapped) | Called `convert_level_to_cm("above the car")` -> 150; trapped, elderly, 150 cm; no question (everything stated) | - |
+| #77 | "l'eau depasse 80 cm, nous sommes bloques dans la voiture" | Used the stated 80 cm without calling the conversion tool | - |
+
+Execution #81 failed with HTTP 429: `gpt-oss-120b` allows 8,000 tokens per minute on the free tier and each agent run uses about 2,000. In production the Distress Agent and the Master Agent together use 5-6k tokens per report, so both agents retry 3 times with 5 s waits, and the system handles roughly one report per minute on the free tier (a limit to state in the report).
 
 ---
 
@@ -116,5 +149,9 @@ LLM guardrails in prompts are necessary but not sufficient, so every decision pa
 | #63-#65 | Voice, voice, text in the same chat | Failed photo result repeated in every update; "source: audio, confidence: low" | Fusion kept the failed vision object; label showed vision confidence for an audio depth | Failed vision results are no longer stored or reused; confidence shown only for photo depths |
 | #63-#65 | Four different test scenarios in one chat | Summaries mixed a car and a house | Correct fusion for one caller, confusing for testing | `/new` command closes the open incident |
 | #62-#65 | Every ticket | "Share location" button sent after each update; unavailable on Telegram Desktop | No per-incident limit; Telegram limitation | Button sent once per incident, message says mobile app or send a landmark |
+| #66 | Photo | "Report received" arrived after the ticket | The acknowledgement was a parallel branch and n8n ran it last | Acknowledgement moved in series before the router |
+| test #73, #78 | Vague text | Follow-up question not sent / agent stopped waiting | See section 3, V5 iterations | Prompt V5 wording |
+| test #83 | Photo, Gemini fallback | Gemini rejected the request (400) | `number|null` union types in the output schema | Optional plain-number fields |
+| test #81 | Three reports at once | HTTP 429 on `gpt-oss-120b` | 8,000 tokens/minute free-tier limit | Agent retries with 5 s waits; limit documented |
 
 What worked in the same session: Gemini 3.5 Transcribe produced a correct Derja transcript; extractor V4 returned elderly + trapped + 150 cm; the incident was graded P1 with the boat + paramedic asset; four reports were fused into one incident; every specialist failure became a human-review ticket instead of a crash.
