@@ -27,3 +27,6 @@ qdrant_storage/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Internal study guides and drafts (contain confidential course material)
+_internal/

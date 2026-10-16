@@ -155,3 +155,27 @@ LLM guardrails in prompts are necessary but not sufficient, so every decision pa
 | test #81 | Three reports at once | HTTP 429 on `gpt-oss-120b` | 8,000 tokens/minute free-tier limit | Agent retries with 5 s waits; limit documented |
 
 What worked in the same session: Gemini 3.5 Transcribe produced a correct Derja transcript; extractor V4 returned elderly + trapped + 150 cm; the incident was graded P1 with the boat + paramedic asset; four reports were fused into one incident; every specialist failure became a human-review ticket instead of a crash.
+
+---
+
+## 7. Version 3: the agentic workflow (current)
+
+The workflow was rebuilt so that agents, not nodes, take every decision: Telegram Trigger -> **Triage Orchestrator**, which calls the **Vision Agent**, **Distress Agent**, **Protocol Agent** and **Safety Officer** as tools (agent-to-agent), plus memory and Telegram tools. The canonical v3 prompt texts are in `n8n_workflows/v3_agentic/prompts/` (`orchestrator.txt`, `vision_agent.txt`, `distress_agent.txt`, `protocol_agent.txt`, `safety_officer.txt`); the rules code of the Safety Officer's tool is `n8n_workflows/v3_agentic/check_triage_rules.js`.
+
+| Prompt | Model | What changed from v2 |
+|---|---|---|
+| Triage Orchestrator (new) | Gemini 3.8 Flash (fallback 3.1 Flash-Lite) | Replaces the Switch/IF pipeline and the Master Triage prompt: understands the message, acknowledges, loads the open incident, calls the specialists in parallel, asks the Protocol Agent, drafts, must call the Safety Officer before saving or replying; language rule (en/fr/ar) |
+| Vision Agent | Qwen 3.8 27B (fallback Gemini 3.5 Flash-Lite) | Same method as V3; now an Agent Tool receiving the photo downloaded by the trigger |
+| Distress Agent | gpt-oss-120b | V5 + chooses the transcription engine itself (`transcribe_voice`, `transcribe_voice_backup`); returns transcript, engine and `followup_asked` |
+| Protocol Agent (new) | gpt-oss-20b | Agentic RAG: must search, then quote tier, asset row and advice |
+| Safety Officer (new) | Gemini 3.1 Flash-Lite (fallback gpt-oss-20b) | Always calls `check_triage_rules` (the guardrail code, now a tool); may only escalate |
+
+Failures found testing v3 (n8n executions 106-109) and fixes:
+
+| Failure | Root cause | Fix |
+|---|---|---|
+| No ticket reached the citizen; invented asset "Rescue Unit / Boat" | The Safety Officer returned an empty answer and the orchestrator carried on without it | Prompt: the Safety Officer is mandatory; retry once; if it still fails send a "human will review" note and save nothing; the asset may only come from the Protocol Agent |
+| Arabic acknowledgement to an English message | No language rule | Language rule in the orchestrator prompt; the ticket text is built by the rules tool in en/fr/ar (`lang` input), so safety-critical wording is deterministic |
+| Orchestrator always on its fallback model | `gemini-3.5-flash` returned HTTP 429 on every call | Primary model changed to `gemini-3.8-flash` (measured: 3.5/3.6 Flash 0/8 calls, 3.8 Flash 6/8 per minute, 3.1 Flash-Lite 8/8) |
+| Voice note not transcribed | n8n refuses to run unpublished workflows used as tools | The two transcription tool workflows must be published |
+| Embedding calls failed (HTTP "no remaining credits") | Hugging Face free credits exhausted | Gemini embeddings + `structured_index_gemini` (see `rag/RETRIEVAL_EVALUATION.md`) |

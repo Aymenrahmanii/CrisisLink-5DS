@@ -28,6 +28,18 @@ Deliverable 4. Raw results and per-query ranks: `rag/results/retrieval_eval.md`.
 5. **Why 200 tokens and not 300 for strategy A**: MiniLM truncates input after 256 tokens, so 300-token chunks would be silently cut before embedding. B's maximum chunk is 240 tokens for the same reason.
 6. **Production end-to-end check.** In n8n, the query from failed execution #49 ("rescue asset for 145 cm floodwater with submerged car") now returns the complete rescue-asset table first (score 0.86), where the old 5-sentence index returned the P2 chunk and led to the wrong asset.
 
+## Update: production embedding model is now gemini-embedding-001
+
+The Hugging Face Inference API used by the first version ran out of free credits, so the v3 workflow embeds queries with Google's `gemini-embedding-001` through the native n8n Gemini embeddings node (same Google credential as the LLMs, no extra service). Because queries and chunks must use the same model, the structure-aware chunks were re-indexed into the Qdrant collection `structured_index_gemini` (`python rag/build_index_gemini.py`) and the benchmark was re-run on the same 20 queries with the same relevance rule (`python rag/evaluate_gemini.py`, raw table in `rag/results/retrieval_eval_gemini.md`).
+
+| Chunking | Embedding | Precision@3 | Hit@3 | MRR | Hit@3 EN | Hit@3 FR/Derja |
+|---|---|---|---|---|---|---|
+| B structured | multilingual-e5-small (previous production) | 0.383 | 0.90 | 0.818 | 1.00 | 0.60 |
+| A fixed | gemini-embedding-001 | 0.400 | 0.95 | 0.818 | 1.00 | 0.80 |
+| **B structured** | **gemini-embedding-001 (production)** | **0.417** | **0.95** | **0.935** | **1.00** | **0.80** |
+
+Structure-aware chunking keeps its advantage in ranking with the new model (MRR 0.935 vs 0.818 for fixed windows). The e5 results above remain the reference for the chunking x embedding comparison and the `structured_index` collection is kept. Caveat: vectors have 3,072 dimensions and Gemini's free tier rate-limits (HTTP 429) when other Gemini agents are busy.
+
 ## What did not work
 
 - **Metadata filtering.** Every chunk carries a `category` (priority_matrix, hazard_thresholds, rescue_assets, ...) and Qdrant has a payload index on it. We planned two filtered tools (thresholds vs procedures), but the n8n Qdrant node (v1.3) ignored `searchFilterJson` in both syntaxes we tried (test executions #60 and #61 returned out-of-category chunks). Production therefore uses one unfiltered tool; the categories remain for future use.
