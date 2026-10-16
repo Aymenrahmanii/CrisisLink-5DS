@@ -1,0 +1,14 @@
+[
+  {
+    "transcript": "المية وصلت للركبة في الدار وبابا مريض ما يقدرش يمشي، احنا ثلاثة، عاونونا",
+    "output": {"reasoning": "Water at knee level inside the house (50 cm). The father is sick and cannot walk, so he cannot get out: trapped, sick. Three people in danger.", "language": "derja", "translation_en": "The water reached the knee in the house and my dad is sick, he cannot walk, we are three, help us", "urgency_keywords": ["المية وصلت للركبة", "مريض", "ما يقدرش يمشي", "عاونونا"], "victim_count": 3, "trapped": true, "medical_flag": true, "vulnerable_persons": ["sick"], "reported_depth_cm": 50, "location_hint": null, "is_genuine_emergency": true}
+  },
+  {
+    "transcript": "hhhh c bon c'est un test, l'eau c'est rien 3adi",
+    "output": {"reasoning": "The speaker laughs and says it is a test and the water is nothing. Not a genuine emergency; nobody in danger.", "language": "mixed", "translation_en": "haha ok it is a test, the water is nothing, normal", "urgency_keywords": [], "victim_count": null, "trapped": false, "medical_flag": false, "vulnerable_persons": [], "reported_depth_cm": null, "location_hint": null, "is_genuine_emergency": false}
+  },
+  {
+    "transcript": "Au secours, ma grand-mère est coincée au rez-de-chaussée près de la mosquée Ennour, l'eau arrive à la fenêtre",
+    "output": {"reasoning": "The grandmother (elderly) is stuck on the ground floor: trapped, elderly. Water at window level (100 cm). One person in danger; the speaker is not said to be in danger.", "language": "french", "translation_en": "Help, my grandmother is stuck on the ground floor near the Ennour mosque, the water reaches the window", "urgency_keywords": ["Au secours", "coincée", "l'eau arrive à la fenêtre"], "victim_count": 1, "trapped": true, "medical_flag": true, "vulnerable_persons": ["elderly"], "reported_depth_cm": 100, "location_hint": "ground floor near the Ennour mosque", "is_genuine_emergency": true}
+  }
+]

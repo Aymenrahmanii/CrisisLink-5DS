@@ -1,0 +1,436 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "summary": {
+    "V2": {
+      "cases_passed": "6/8",
+      "field_accuracy": 0.889
+    },
+    "V3": {
+      "cases_passed": "6/8",
+      "field_accuracy": 0.926
+    },
+    "V4": {
+      "cases_passed": "8/8",
+      "field_accuracy": 1.0
+    }
+  },
+  "results": [
+    {
+      "version": "V2",
+      "id": "derja_whisper",
+      "pass": false,
+      "got": {
+        "trapped": true,
+        "vulnerable": false,
+        "genuine": true,
+        "victims": null,
+        "depth": 90
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": false,
+        "depth_at_least": false,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V2",
+      "id": "derja_gemini",
+      "pass": false,
+      "got": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 1,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "depth_at_least": false,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V2",
+      "id": "french_car",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": false,
+        "genuine": true,
+        "victims": null,
+        "depth": 80
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "depth_at_least": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V2",
+      "id": "arabizi_playbook",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 2,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V2",
+      "id": "english_girls",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": false,
+        "genuine": true,
+        "victims": 2,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "victims": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V2",
+      "id": "prank",
+      "pass": true,
+      "got": {
+        "trapped": false,
+        "vulnerable": false,
+        "genuine": false,
+        "victims": null,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V2",
+      "id": "derja_baby_knee",
+      "pass": true,
+      "got": {
+        "trapped": false,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 1,
+        "depth": 50
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "depth_at_least": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V2",
+      "id": "french_disabled",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 1,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V3",
+      "id": "derja_whisper",
+      "pass": false,
+      "got": {
+        "trapped": true,
+        "vulnerable": false,
+        "genuine": true,
+        "victims": null,
+        "depth": 150
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": false,
+        "depth_at_least": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V3",
+      "id": "derja_gemini",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 1,
+        "depth": 150
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "depth_at_least": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V3",
+      "id": "french_car",
+      "pass": false,
+      "got": {
+        "trapped": true,
+        "vulnerable": false,
+        "genuine": true,
+        "victims": null,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "depth_at_least": false,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V3",
+      "id": "arabizi_playbook",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 2,
+        "depth": 90
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V3",
+      "id": "english_girls",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": false,
+        "genuine": true,
+        "victims": 2,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "victims": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V3",
+      "id": "prank",
+      "pass": true,
+      "got": {
+        "trapped": false,
+        "vulnerable": false,
+        "genuine": false,
+        "victims": null,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V3",
+      "id": "derja_baby_knee",
+      "pass": true,
+      "got": {
+        "trapped": false,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 1,
+        "depth": 50
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "depth_at_least": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V3",
+      "id": "french_disabled",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 1,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V4",
+      "id": "derja_whisper",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 1,
+        "depth": 150
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "depth_at_least": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V4",
+      "id": "derja_gemini",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 1,
+        "depth": 150
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "depth_at_least": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V4",
+      "id": "french_car",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": false,
+        "genuine": true,
+        "victims": null,
+        "depth": 80
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "depth_at_least": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V4",
+      "id": "arabizi_playbook",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 2,
+        "depth": 90
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V4",
+      "id": "english_girls",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": false,
+        "genuine": true,
+        "victims": 2,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "victims": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V4",
+      "id": "prank",
+      "pass": true,
+      "got": {
+        "trapped": false,
+        "vulnerable": false,
+        "genuine": false,
+        "victims": null,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V4",
+      "id": "derja_baby_knee",
+      "pass": true,
+      "got": {
+        "trapped": false,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 1,
+        "depth": 50
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "depth_at_least": true,
+        "genuine": true
+      }
+    },
+    {
+      "version": "V4",
+      "id": "french_disabled",
+      "pass": true,
+      "got": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true,
+        "victims": 1,
+        "depth": null
+      },
+      "checks": {
+        "trapped": true,
+        "vulnerable": true,
+        "genuine": true
+      }
+    }
+  ]
+}

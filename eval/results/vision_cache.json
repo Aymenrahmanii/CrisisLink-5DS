@@ -1,0 +1,643 @@
+{
+ "V1|test_media/imagess/10-15/10-15-1.jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 45,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/10-15.jpg": {
+  "is_flood": true,
+  "anchor": "human leg",
+  "estimated_depth_cm": 45,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/images (1).jpg": {
+  "is_flood": true,
+  "anchor": "human leg",
+  "estimated_depth_cm": 20,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/images (2).jpg": {
+  "is_flood": true,
+  "anchor": "human leg",
+  "estimated_depth_cm": 25,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/images (3).jpg": {
+  "is_flood": true,
+  "anchor": "human ankle",
+  "estimated_depth_cm": 15,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/10-15/images (4).jpg": {
+  "is_flood": true,
+  "anchor": "human foot",
+  "estimated_depth_cm": 15,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/images (5).jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 30,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/images (6).jpg": {
+  "is_flood": true,
+  "anchor": "pedestrian leg",
+  "estimated_depth_cm": 5,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/10-15/images (7).jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 60,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/10-15/images.jpg": {
+  "is_flood": true,
+  "anchor": "door frame",
+  "estimated_depth_cm": 25,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (2).jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 45,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (3).jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 45,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (4).jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 25,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (5).jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 30,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (6).jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 25,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (8).jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 10,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images.jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 30,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (2).jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 80,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (3).jpg": {
+  "is_flood": true,
+  "anchor": "car door",
+  "estimated_depth_cm": 60,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (4).jpg": {
+  "is_flood": true,
+  "anchor": "car door",
+  "estimated_depth_cm": 60,
+  "confidence": "high"
+ },
+ "V1|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (5).jpg": {
+  "is_flood": true,
+  "anchor": "human torso",
+  "estimated_depth_cm": 80,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (6).jpg": {
+  "is_flood": true,
+  "anchor": "car door",
+  "estimated_depth_cm": 60,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (7).jpg": {
+  "is_flood": true,
+  "anchor": "human torso",
+  "estimated_depth_cm": 120,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images.jpg": {
+  "is_flood": true,
+  "anchor": "car door",
+  "estimated_depth_cm": 90,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images3.jpg": {
+  "is_flood": true,
+  "anchor": "car roof",
+  "estimated_depth_cm": 90,
+  "confidence": "medium"
+ },
+ "V1|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/téléchargement.jpg": {
+  "is_flood": true,
+  "anchor": "car door",
+  "estimated_depth_cm": 60,
+  "confidence": "medium"
+ },
+ "V1|test_media/images/01_shallow_ankle_15cm.jpg": {
+  "is_flood": true,
+  "anchor": "human leg",
+  "estimated_depth_cm": 20,
+  "confidence": "high"
+ },
+ "V1|test_media/images/02_moderate_wheel_40cm.jpg": {
+  "is_flood": true,
+  "anchor": "car tyre",
+  "estimated_depth_cm": 30,
+  "confidence": "high"
+ },
+ "V1|test_media/images/03_severe_submerged_120cm.jpg": {
+  "is_flood": true,
+  "anchor": "car roof",
+  "estimated_depth_cm": 100,
+  "confidence": "medium"
+ },
+ "V2|test_media/imagess/10-15/10-15-1.jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street scene with significant standing water submerging the lower parts of vehicles and the ground. A man is wading through the water, and his lower legs are submerged. The water level reaches approximately the mid-shin to lower knee area of the adult male. In the background, the lower sections of buses are also submerged. Based on the reference anchors, an adult's knee is at 50 cm, and the water appears to be slightly below that level, likely around the shin height (30-40 cm). The water is covering the street surface and the bottom of the bus tires.",
+  "anchor": "adult shin/knee",
+  "visual_cues": [
+   "man wading through water",
+   "water level at mid-shin",
+   "submerged street surface",
+   "lower bus sections underwater"
+  ],
+  "depth_min_cm": 30,
+  "depth_max_cm": 45,
+  "estimated_depth_cm": 35,
+  "confidence": "medium",
+  "moving_water": false,
+  "people_visible": 1
+ },
+ "V2|test_media/imagess/10-15/10-15.jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a residential street completely submerged in brown, moving water, which is clearly a flood event. The primary reference anchor is the adult standing in the water carrying a child. The waterline is visible at the adult's mid-thigh level, which is significantly above the knee (50 cm) but below the waist (100 cm). Based on the water reaching the mid-thigh area, the depth is estimated to be between 60 and 80 cm. The water is murky and moving, indicating active flow.",
+  "anchor": "adult mid-thigh",
+  "visual_cues": [
+   "residential street submerged",
+   "adult standing in water with water at mid-thigh",
+   "brown moving water",
+   "red object floating in the distance"
+  ],
+  "depth_min_cm": 60,
+  "depth_max_cm": 80,
+  "estimated_depth_cm": 70,
+  "confidence": "medium",
+  "moving_water": true,
+  "people_visible": 2
+ },
+ "V2|test_media/imagess/10-15/images (1).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street or pedestrian area inundated with water, which is not its normal state. The water level is clearly visible relative to the people walking through it. The adult male's waterline is at his shins, and the child's waterline is at his knees. Using the adult's shin height as a reference (approx 20-25 cm) and the child's knee height (approx 30-40 cm), the depth is estimated to be between 20 and 40 cm. The water appears to be moving slightly as the people walk through it, creating splashes.",
+  "anchor": "adult shin / child knee",
+  "visual_cues": [
+   "water covering the street surface",
+   "adult walking with water at shin level",
+   "child walking with water at knee level",
+   "splashes created by movement"
+  ],
+  "depth_min_cm": 20,
+  "depth_max_cm": 40,
+  "estimated_depth_cm": 30,
+  "confidence": "medium",
+  "moving_water": true,
+  "people_visible": 3
+ },
+ "V2|test_media/imagess/10-15/images (2).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a person wading through brown, murky water on what appears to be a street or paved area, indicating a flood event. The most reliable anchor is the person's leg. The water level reaches approximately mid-shin to just below the knee. Based on standard human anatomy, the mid-shin is roughly 20-25 cm above the ground, and the knee is at 50 cm. The waterline is clearly above the ankle (10-15 cm) and below the knee (50 cm). Given the depth of the splash and the submersion of the lower leg, the depth is estimated to be between 20 cm and 40 cm.",
+  "anchor": "adult shin/knee",
+  "visual_cues": [
+   "person wading in brown water",
+   "water level at mid-shin",
+   "murky water with ripples"
+  ],
+  "depth_min_cm": 20,
+  "depth_max_cm": 40,
+  "estimated_depth_cm": 30,
+  "confidence": "medium",
+  "moving_water": true,
+  "people_visible": 1
+ },
+ "V2|test_media/imagess/10-15/images (3).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street or park path completely submerged in brown, murky water, which is clearly a flood event. An adult male is standing in the water, providing a direct human reference anchor. The waterline is visible at his lower legs, specifically covering his ankles and reaching up to his shins, just below the knee. Based on the reference anchors, the adult ankle is at 10-15 cm and the knee is at 50 cm. Since the water is well above the ankle but below the knee, the depth is estimated to be in the range of 20-30 cm. The water appears relatively calm with some ripples, suggesting it is not currently moving with high velocity, but the depth is significant enough to be a hazard.",
+  "anchor": "adult ankle/shin",
+  "visual_cues": [
+   "water covers ankles and shins",
+   "brown murky water",
+   "submerged street/path",
+   "adult standing in water"
+  ],
+  "depth_min_cm": 20,
+  "depth_max_cm": 30,
+  "estimated_depth_cm": 25,
+  "confidence": "high",
+  "moving_water": false,
+  "people_visible": 1
+ },
+ "V2|test_media/imagess/10-15/images (4).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street or paved area completely submerged in brown, murky water, which is clearly a flood event. The primary reference anchor is the adult male walking through the water. In the top and bottom-left panels, the water level reaches approximately the man's mid-shin to lower calf. Using the standard reference anchors, an adult's ankle is 10-15 cm and the knee is 50 cm. The waterline is visibly above the ankle but well below the knee, placing the depth in the mid-shin range. The water appears to be moving slightly as the man walks, creating ripples. No cars or other structural anchors are visible to provide a secondary check, but the human body anchor is clear and close to the camera.",
+  "anchor": "adult shin/calf",
+  "visual_cues": [
+   "Water level at mid-shin of adult male",
+   "Brown murky water covering the street",
+   "Man holding shoes while wading"
+  ],
+  "depth_min_cm": 20,
+  "depth_max_cm": 35,
+  "estimated_depth_cm": 25,
+  "confidence": "high",
+  "moving_water": true,
+  "people_visible": 1
+ },
+ "V2|test_media/imagess/10-15/images (5).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a residential street completely inundated with water, which is clearly a flood event. In the foreground, a man is standing in the water, and the water level reaches approximately his mid-shin to ankle area. In the background, two cars are parked in the street, and the water level is visible up to the bottom of the car tires and the lower bumper area. The water is covering the entire road surface and the lower parts of the sidewalks. Based on the man's position and the car tires, the water depth is estimated to be between 10 and 20 cm.",
+  "anchor": "adult ankle",
+  "visual_cues": [
+   "water covering the entire street",
+   "man standing in water with water at ankle/shin level",
+   "cars parked in the street with water at tire level"
+  ],
+  "depth_min_cm": 10,
+  "depth_max_cm": 20,
+  "estimated_depth_cm": 15,
+  "confidence": "medium",
+  "moving_water": false,
+  "people_visible": 2
+ },
+ "V2|test_media/imagess/10-15/images (6).jpg": {
+  "is_flood": false,
+  "reasoning": "The image shows a street scene during heavy rain. The ground is wet and highly reflective, indicating standing water or a wet surface, but there is no significant accumulation of water that would constitute a flood. People are walking with umbrellas, and a dog is being walked, suggesting the street is passable and not submerged. There are no visible anchors like car wheels, curbs, or door handles that are partially submerged to indicate a specific flood depth. The water level appears to be at or near the ground surface, consistent with rain runoff rather than a flood event.",
+  "anchor": null,
+  "visual_cues": [
+   "wet reflective street surface",
+   "people walking with umbrellas",
+   "no submerged objects or vehicles"
+  ],
+  "depth_min_cm": null,
+  "depth_max_cm": null,
+  "estimated_depth_cm": null,
+  "confidence": "high",
+  "moving_water": false,
+  "people_visible": 3
+ },
+ "V2|test_media/imagess/10-15/images (7).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street completely submerged in brown floodwater, with multiple cars partially submerged and tilted, indicating a severe flood event. The most reliable anchor is the car wheel hub (centre of the wheel) on the vehicles in the foreground and mid-ground. The waterline is clearly visible above the wheel hubs, reaching up to the lower part of the car doors and bumpers. Based on the reference anchors, the car wheel hub is at 30-35 cm, and the top of the car tyre/bumper is at 50-65 cm. The water level appears to be between the wheel hub and the bumper, suggesting a depth of approximately 40-55 cm. The water is murky and brown, and there are no people visible in the scene.",
+  "anchor": "car wheel hub",
+  "visual_cues": [
+   "waterline above car wheel hubs",
+   "cars partially submerged and tilted",
+   "brown murky water covering the street"
+  ],
+  "depth_min_cm": 40,
+  "depth_max_cm": 55,
+  "estimated_depth_cm": 48,
+  "confidence": "high",
+  "moving_water": false,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/10-15/images.jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a residential street completely inundated with brown, murky water, which is clearly a flood event. I am looking for reference anchors to estimate depth. On the right side, there is a blue water tank and a grey cabinet sitting on a raised concrete platform or step. The water level is visibly below the top of this platform, submerging the base of the tank and the lower part of the cabinet. A standard raised step or low wall is typically around 15-20 cm high, but the water appears to be covering the ground level and reaching up the side of the structure. Looking at the distance, the water covers the entire street surface. In the background, a person is walking, and the water appears to be around their shins or ankles, suggesting a depth of roughly 15-25 cm. However, looking closer at the foreground and mid-ground, the water level is quite high relative to the street surface. The water is lapping against the base of the blue tank and the grey cabinet. If we assume the base of these objects is at ground level, the water is covering them significantly. Comparing to the person in the distance, the water seems to be around 20-30 cm deep. Let's look for a better anchor. The white cable/hose on the right is lying on the ground, submerged. The water level is roughly at the bottom of the blue tank. Without a clear vertical ruler or a car, I have to estimate based on the person in the background. The person's legs are visible, and the water is around their mid-shin. This suggests a depth of approximately 20-30 cm. The water is moving slightly (ripples).",
+  "anchor": "adult shin (person in background)",
+  "visual_cues": [
+   "brown murky water covering the street",
+   "water level around the shins of a pedestrian in the distance",
+   "submerged base of a blue water tank and grey cabinet on the right"
+  ],
+  "depth_min_cm": 20,
+  "depth_max_cm": 35,
+  "estimated_depth_cm": 25,
+  "confidence": "medium",
+  "moving_water": true,
+  "people_visible": 1
+ },
+ "V2|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (2).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street completely submerged in water with a white sedan partially submerged. The waterline is clearly visible on the side of the car. The water level is above the center of the car wheel (hub) and appears to be near the bottom of the car door or the door handle level. Based on the reference anchors, the car wheel hub is at 30-35 cm and the door handle is at 90-100 cm. The waterline is visibly above the wheel hub and roughly halfway up the door panel, suggesting a depth between the hub and the handle. Given the life-safety bias to report the deeper interval when unsure, and the water appearing to cover the lower half of the door, the depth is estimated to be in the range of 50-100 cm.",
+  "anchor": "car wheel hub / car door",
+  "visual_cues": [
+   "white car partially submerged",
+   "waterline above wheel hub",
+   "waterline below door handle",
+   "street furniture (trash bins) submerged"
+  ],
+  "depth_min_cm": 50,
+  "depth_max_cm": 100,
+  "estimated_depth_cm": 75,
+  "confidence": "medium",
+  "moving_water": false,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (3).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street completely submerged in water, with a silver sedan partially submerged. The waterline is clearly visible on the rear of the car. The water level is above the car's rear bumper and wheel hubs, reaching approximately the level of the taillights and license plate. Based on standard vehicle dimensions, the rear bumper is typically around 50-60 cm high, and the taillights are slightly higher. The water appears to be at the level of the car's door handles or slightly below, which corresponds to a depth of roughly 90-100 cm. The water is murky and covers the entire roadway, indicating a significant flood event.",
+  "anchor": "car bumper / taillight",
+  "visual_cues": [
+   "silver sedan partially submerged",
+   "waterline above rear bumper",
+   "water reaching taillight level",
+   "street completely covered in water"
+  ],
+  "depth_min_cm": 80,
+  "depth_max_cm": 100,
+  "estimated_depth_cm": 90,
+  "confidence": "high",
+  "moving_water": false,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (4).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a car driving through a street submerged in brown, moving water, which is a clear indication of a flood. The most reliable anchor is the car's wheel hub (centre of the wheel). The waterline is visible at the lower third of the wheel, well below the hub centre. Since the hub centre is typically 30-35 cm above the ground and is clearly above the water surface, the depth is estimated to be between 20 and 30 cm. The water is actively splashing around the tyres, indicating it is moving.",
+  "anchor": "car wheel hub",
+  "visual_cues": [
+   "car driving through street",
+   "waterline below wheel hub centre",
+   "brown moving water",
+   "splashing around tyres"
+  ],
+  "depth_min_cm": 20,
+  "depth_max_cm": 30,
+  "estimated_depth_cm": 25,
+  "confidence": "high",
+  "moving_water": true,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (5).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a blue sedan submerged in water on a street or roadside area, which is a clear indication of flooding. The water level is high enough to cover the lower half of the car's body. Specifically, the waterline is visible just below the door handles and window sills. Using the car door handle as a reference anchor (approx. 90-100 cm), the water appears to be slightly below this level, likely around the height of the car's rocker panel or lower door section. The water is murky and covers the entire wheel wells, submerging the wheel hubs (30-35 cm) and the lower bumper. Based on the waterline being below the door handle but well above the wheel hub, the depth is estimated to be between 50 cm and 90 cm.",
+  "anchor": "car door handle",
+  "visual_cues": [
+   "blue car partially submerged",
+   "waterline below door handle",
+   "wheel hubs fully submerged",
+   "murky water on street"
+  ],
+  "depth_min_cm": 50,
+  "depth_max_cm": 90,
+  "estimated_depth_cm": 70,
+  "confidence": "medium",
+  "moving_water": false,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (6).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a red car driving through a street submerged in brown, moving water, which constitutes a flood. The most reliable anchor is the car's wheel hub (centre of the wheel). In the top and bottom panels, the waterline is clearly visible at the level of the wheel hub, submerging the lower half of the tyre and the bottom of the wheel arch. The wheel hub is located at approximately 30-35 cm above the ground. Since the water is at this level, the depth is estimated to be in that range. The water is turbulent and moving, indicating active flow.",
+  "anchor": "car wheel hub",
+  "visual_cues": [
+   "water level at the centre of the wheel hub",
+   "brown turbulent water splashing around the tyres",
+   "lower half of the car wheel submerged"
+  ],
+  "depth_min_cm": 30,
+  "depth_max_cm": 35,
+  "estimated_depth_cm": 32,
+  "confidence": "high",
+  "moving_water": true,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images (8).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a car parked in a covered area (likely a parking structure or garage) with standing water on the floor. The water level is clearly visible in the close-up view of the rear wheel. The waterline reaches approximately halfway up the tire tread, which corresponds to the height of the wheel hub (30-35 cm). The water appears brown and murky, consistent with floodwater. Since the water is standing in a location where it should not be (a parking area), this is classified as a flood.",
+  "anchor": "car wheel hub",
+  "visual_cues": [
+   "standing water in parking area",
+   "waterline at mid-tire height",
+   "brown murky water",
+   "car parked in flooded structure"
+  ],
+  "depth_min_cm": 30,
+  "depth_max_cm": 35,
+  "estimated_depth_cm": 32,
+  "confidence": "high",
+  "moving_water": false,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/(Moderate  Car Wheels)depth 35–45 cm/images.jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street scene with multiple parked cars partially submerged in water, which is a clear indication of a flood. The water level is high enough to cover the lower portion of the car tires and reach the bottom of the car bumpers. Using the car wheel hub (center of the wheel) as a reference anchor, which is typically 30-35 cm above the ground, the waterline is observed to be slightly below the center of the wheel but well above the bottom of the tire. This suggests a depth between the bottom of the tire and the hub. The bumper, which is around 50-65 cm high, is also partially submerged. Based on the waterline relative to the wheel hub and bumper, the depth is estimated to be in the range of 35-50 cm.",
+  "anchor": "car wheel hub",
+  "visual_cues": [
+   "water covering lower half of car tires",
+   "waterline below wheel hub center",
+   "car bumpers partially submerged",
+   "standing water on street surface"
+  ],
+  "depth_min_cm": 35,
+  "depth_max_cm": 50,
+  "estimated_depth_cm": 42,
+  "confidence": "high",
+  "moving_water": false,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (2).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows multiple vehicles submerged in a large body of brown, murky water, which is clearly a flood event as cars are not meant to be in this environment. The water level is extremely high, submerging the entire lower body of the cars. Specifically, the waterline is visible above the door handles and near the top of the side windows on the white sedan and the red hatchback. Using the car door handle (approx. 90-100 cm) as a reference, the water is well above this point. The water appears to be reaching the roofline or just below it on some vehicles, suggesting a depth significantly greater than 100 cm. Given the water is above the door handles and approaching the roof (145-160 cm), the depth is estimated to be in the range of 100-145 cm.",
+  "anchor": "car door handle",
+  "visual_cues": [
+   "water above car door handles",
+   "water near car roofline",
+   "brown murky water",
+   "multiple submerged cars"
+  ],
+  "depth_min_cm": 100,
+  "depth_max_cm": 145,
+  "estimated_depth_cm": 120,
+  "confidence": "medium",
+  "moving_water": false,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (3).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a car submerged in a large body of brown, moving water, which is clearly a flood event. The waterline is visible on the side of the car, reaching the bottom of the side windows and the door handles. Based on the reference anchors, the car door handle is typically located at approximately 90-100 cm above the ground. Since the water is at this level, the depth is estimated to be between 90 and 100 cm. The water appears to be moving, indicated by the ripples and brown color.",
+  "anchor": "car door handle",
+  "visual_cues": [
+   "car door handle submerged",
+   "waterline at bottom of side windows",
+   "brown moving water",
+   "car roof visible above water"
+  ],
+  "depth_min_cm": 90,
+  "depth_max_cm": 100,
+  "estimated_depth_cm": 95,
+  "confidence": "high",
+  "moving_water": true,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (4).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street completely submerged in water, which is a clear flood scenario. A dark-colored car is partially submerged in the foreground. The waterline is visible just below the car's side mirror and door handle. The side mirror is typically located around 120-130 cm above the ground, and the door handle is around 90-100 cm. Since the water is clearly above the door handle level and approaching the mirror, the depth is significant. The most reliable anchor is the car's door handle/mirror area. The water is murky and brown, indicating it is moving or has picked up sediment. No people are visible in the water.",
+  "anchor": "car door handle / side mirror",
+  "visual_cues": [
+   "car partially submerged",
+   "waterline above door handle",
+   "waterline below side mirror",
+   "brown murky water",
+   "road completely covered"
+  ],
+  "depth_min_cm": 100,
+  "depth_max_cm": 130,
+  "estimated_depth_cm": 115,
+  "confidence": "high",
+  "moving_water": true,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (5).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street completely submerged in water, with two men standing in it. This is a clear flood scenario. The most reliable anchor is the adult human body. The waterline is visible at the chest level of the man on the left (wearing a brown jacket) and slightly lower, around the waist/chest of the man on the right. Based on the reference anchors, an adult chest is approximately 130 cm above the ground. The water appears to be reaching the chest area, indicating a depth of around 100-130 cm. Given the life-safety bias to report the deeper interval when unsure, and the water clearly being above the waist (100 cm), the depth is estimated to be in the range of 100-130 cm.",
+  "anchor": "adult chest",
+  "visual_cues": [
+   "water level at chest height of standing adults",
+   "submerged street surface",
+   "reflections of lights on water surface"
+  ],
+  "depth_min_cm": 100,
+  "depth_max_cm": 130,
+  "estimated_depth_cm": 115,
+  "confidence": "medium",
+  "moving_water": false,
+  "people_visible": 2
+ },
+ "V2|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (6).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a white car driving through a flooded street, creating a significant splash. This is a clear flood scenario as water is covering the road surface where it should not be. The most reliable anchor is the car itself. The waterline is visible at the lower part of the car's doors, well above the wheel hubs (which are completely submerged) and the bumper. The water level appears to be around the door handles or slightly below, which corresponds to a height of approximately 90-100 cm. The water is murky and moving, indicating active flow.",
+  "anchor": "car door handle",
+  "visual_cues": [
+   "white car driving through water",
+   "large brown splash at the front",
+   "water level reaching the lower door panel",
+   "wheels completely submerged"
+  ],
+  "depth_min_cm": 90,
+  "depth_max_cm": 100,
+  "estimated_depth_cm": 95,
+  "confidence": "high",
+  "moving_water": true,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images (7).jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street scene completely submerged in water, with a person floating in the middle of the road. The water level is high enough to submerge the lower portions of the buildings and the base of the utility poles. Specifically, the waterline is visible well above the ground level, reaching up to the lower window sills and the base of the brick archway. Using the adult waist/ground-floor window sill anchor (approx. 100 cm) as a reference, the water appears to be at or slightly below this level, but significantly above the car bumper level (50-65 cm). The presence of a person floating on a raft confirms the depth is sufficient for buoyancy, likely exceeding 1 meter.",
+  "anchor": "ground-floor window sill",
+  "visual_cues": [
+   "Street completely submerged",
+   "Person floating on a raft",
+   "Water level near lower window sills",
+   "Base of utility poles submerged"
+  ],
+  "depth_min_cm": 80,
+  "depth_max_cm": 110,
+  "estimated_depth_cm": 95,
+  "confidence": "medium",
+  "moving_water": true,
+  "people_visible": 1
+ },
+ "V2|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images.jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a car partially submerged in water on what appears to be a street or road, which is a clear indication of flooding. The waterline is visible relative to the car's body. The water level is above the car's door handles and window sills, reaching up to the roofline. Based on the reference anchors, the car roof is typically 145-160 cm above the ground. Since the water is near the roof, the depth is estimated to be in that range. A person is visible in the water, indicating the severity of the situation.",
+  "anchor": "car roof",
+  "visual_cues": [
+   "car partially submerged",
+   "waterline near car roof",
+   "person in water"
+  ],
+  "depth_min_cm": 145,
+  "depth_max_cm": 160,
+  "estimated_depth_cm": 150,
+  "confidence": "high",
+  "moving_water": false,
+  "people_visible": 1
+ },
+ "V2|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/images3.jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street completely submerged in murky, moving water, which is clearly a flood event. A car is visible in the water, with the waterline reaching the top of the side windows and the roofline. The car roof is the most reliable visible anchor, as the water is at or slightly above the roof level. According to reference anchors, a car roof is 145-160 cm above ground. Since the water covers the entire side profile up to the roof, the depth is estimated to be at least 145 cm. The water appears to be moving and turbulent, indicating a strong current.",
+  "anchor": "car roof",
+  "visual_cues": [
+   "car roof visible above water",
+   "side windows submerged",
+   "murky moving water",
+   "street completely flooded"
+  ],
+  "depth_min_cm": 145,
+  "depth_max_cm": 160,
+  "estimated_depth_cm": 150,
+  "confidence": "high",
+  "moving_water": true,
+  "people_visible": 0
+ },
+ "V2|test_media/imagess/Photo 3 (Severe  Critical)  depth  100 cm/téléchargement.jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a car driving through a street submerged in significant amounts of brown, moving water, which is a clear indication of a flood event. The waterline is visible relative to the car's structure. The water level is above the car's bumper and wheel hubs, reaching up to the lower part of the car doors and the bottom of the windshield. Based on the reference anchors, the top of the car bumper is approximately 50-65 cm, and the car door handle is around 90-100 cm. The water appears to be somewhere between the bumper and the door handle, likely around the 60-80 cm range. Given the life-safety bias to report the deeper interval when unsure, and the water clearly covering the lower body panels, a depth of 60-80 cm is a reasonable estimate.",
+  "anchor": "car bumper / lower door",
+  "visual_cues": [
+   "car driving through street",
+   "brown moving water",
+   "waterline above bumper",
+   "waterline below door handle"
+  ],
+  "depth_min_cm": 60,
+  "depth_max_cm": 80,
+  "estimated_depth_cm": 70,
+  "confidence": "medium",
+  "moving_water": true,
+  "people_visible": 1
+ },
+ "V2|test_media/images/01_shallow_ankle_15cm.jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street or sidewalk area inundated with water, which is not its normal state. I can see an adult and a child walking through the water. The water level reaches approximately the adult's ankle to mid-calf area. Based on the reference anchors, an adult's ankle is 10-15 cm and the knee is 50 cm. The water is clearly above the ankles but well below the knees, suggesting a depth in the range of 15-30 cm. The water appears to be moving slightly as the people walk through it, creating splashes.",
+  "anchor": "adult ankle",
+  "visual_cues": [
+   "water covering the street surface",
+   "adult walking through water up to mid-calf",
+   "child walking through water up to mid-calf",
+   "splashes created by movement"
+  ],
+  "depth_min_cm": 15,
+  "depth_max_cm": 30,
+  "estimated_depth_cm": 22,
+  "confidence": "medium",
+  "moving_water": true,
+  "people_visible": 3
+ },
+ "V2|test_media/images/02_moderate_wheel_40cm.jpg": {
+  "is_flood": true,
+  "reasoning": "The image shows a street scene with parked cars partially submerged in water, which is a clear indication of a flood. The water level is visible relative to the car wheels. In the clearest view (bottom right), the waterline reaches approximately the center of the wheel hub (the axle). According to the reference anchors, the car wheel hub is located at 30-35 cm above the ground. The water appears to be covering the lower half of the tire and reaching the hub center. Therefore, the depth is estimated to be around 30-35 cm.",
+  "anchor": "car wheel hub",
+  "visual_cues": [
+   "water covering lower half of car tires",
+   "waterline at the center of the wheel hub",
+   "reflections on the water surface"
+  ],
+  "depth_min_cm": 30,
+  "depth_max_cm": 35,
+  "estimated_depth_cm": 32,
+  "confidence": "high",
+  "moving_water": false,
+  "people_visible": 0
+ }
+}

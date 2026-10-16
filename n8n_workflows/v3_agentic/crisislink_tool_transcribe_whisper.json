@@ -1,0 +1,187 @@
+{
+ "id": "CLv3ToolWhisper1",
+ "name": "CrisisLink Tool - Transcribe (Whisper)",
+ "nodes": [
+  {
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "file_id"
+      }
+     ]
+    }
+   },
+   "id": "1dd17c78-7daf-489f-874a-35dd2f036c51",
+   "name": "When called by the Distress Agent",
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1,
+   "position": [
+    0,
+    0
+   ]
+  },
+  {
+   "parameters": {
+    "resource": "file",
+    "fileId": "={{ $json.file_id }}",
+    "additionalFields": {}
+   },
+   "id": "9d91d4fa-93e0-4a9f-90ee-72c74237873e",
+   "name": "Download Voice",
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "position": [
+    220,
+    0
+   ],
+   "credentials": {
+    "telegramApi": {
+     "id": "TD9NIys0aw9ptA4p",
+     "name": "Telegram account"
+    }
+   }
+  },
+  {
+   "parameters": {
+    "jsCode": "// Telegram voice notes arrive as .oga, which Groq Whisper rejects -> rename to .ogg\nconst SUPPORTED = /\\.(flac|mp3|mp4|mpeg|mpga|m4a|ogg|wav|webm)$/i;\nfor (const item of $input.all()) {\n  const bin = item.binary && item.binary.data;\n  if (!bin) continue;\n  let name = (bin.fileName || 'voice.ogg').replace(/\\.oga$/i, '.ogg');\n  if (!SUPPORTED.test(name)) name += '.ogg';\n  bin.fileName = name;\n  bin.fileExtension = name.split('.').pop();\n  if (!bin.mimeType || bin.mimeType === 'application/octet-stream') bin.mimeType = 'audio/ogg';\n}\nreturn $input.all();"
+   },
+   "id": "3defd599-62cf-4e84-bc05-79afc85faa73",
+   "name": "Fix Audio Filename",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    440,
+    0
+   ]
+  },
+  {
+   "parameters": {
+    "method": "POST",
+    "url": "https://api.groq.com/openai/v1/audio/transcriptions",
+    "authentication": "genericCredentialType",
+    "genericAuthType": "httpBearerAuth",
+    "sendBody": true,
+    "contentType": "multipart-form-data",
+    "bodyParameters": {
+     "parameters": [
+      {
+       "name": "model",
+       "value": "whisper-large-v3"
+      },
+      {
+       "parameterType": "formBinaryData",
+       "name": "file",
+       "inputDataFieldName": "data"
+      },
+      {
+       "name": "temperature",
+       "value": "0"
+      },
+      {
+       "name": "prompt",
+       "value": "Flood emergency voice note in Tunisian Derja, Arabic, French or English."
+      }
+     ]
+    },
+    "options": {}
+   },
+   "id": "66bb8151-1a38-4eb6-a224-2df34333063b",
+   "name": "Whisper Transcribe",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.5,
+   "position": [
+    660,
+    0
+   ],
+   "credentials": {
+    "httpBearerAuth": {
+     "id": "xg45srGOXb1ejgPE",
+     "name": "Bearer Auth account"
+    }
+   }
+  },
+  {
+   "parameters": {
+    "assignments": {
+     "assignments": [
+      {
+       "id": "687b5a0a-b785-4423-a3c2-e51c400c529b",
+       "name": "text",
+       "value": "={{ $json.text }}",
+       "type": "string"
+      },
+      {
+       "id": "692ec425-8a49-4bfb-8971-410fe9660ffe",
+       "name": "asr_engine",
+       "value": "whisper-large-v3",
+       "type": "string"
+      }
+     ]
+    },
+    "options": {}
+   },
+   "id": "5c82baa8-c4f8-4f45-b6df-41571ca0574c",
+   "name": "Result",
+   "type": "n8n-nodes-base.set",
+   "typeVersion": 3.4,
+   "position": [
+    880,
+    0
+   ]
+  }
+ ],
+ "connections": {
+  "When called by the Distress Agent": {
+   "main": [
+    [
+     {
+      "node": "Download Voice",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Download Voice": {
+   "main": [
+    [
+     {
+      "node": "Fix Audio Filename",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Fix Audio Filename": {
+   "main": [
+    [
+     {
+      "node": "Whisper Transcribe",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Whisper Transcribe": {
+   "main": [
+    [
+     {
+      "node": "Result",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  }
+ },
+ "active": false,
+ "settings": {
+  "executionOrder": "v1",
+  "callerPolicy": "workflowsFromSameOwner"
+ },
+ "pinData": {},
+ "tags": []
+}

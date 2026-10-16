@@ -1,0 +1,153 @@
+{
+ "id": "CLv3ToolGemini01",
+ "name": "CrisisLink Tool - Transcribe (Gemini)",
+ "nodes": [
+  {
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "file_id"
+      }
+     ]
+    }
+   },
+   "id": "9a1cc07e-c2d5-498a-bf93-55fba5db3115",
+   "name": "When called by the Distress Agent",
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1,
+   "position": [
+    0,
+    0
+   ]
+  },
+  {
+   "parameters": {
+    "resource": "file",
+    "fileId": "={{ $json.file_id }}",
+    "additionalFields": {}
+   },
+   "id": "1a94cede-df7d-4399-924e-42a4bb0b64fd",
+   "name": "Download Voice",
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "position": [
+    220,
+    0
+   ],
+   "credentials": {
+    "telegramApi": {
+     "id": "TD9NIys0aw9ptA4p",
+     "name": "Telegram account"
+    }
+   }
+  },
+  {
+   "parameters": {
+    "jsCode": "// Google retires models too: list them with GET /v1beta/models and change this line if calls fail\nconst TRANSCRIBE_MODEL = 'gemini-3.5-transcribe';\n\n// Transcription prompt V2: domain + language context (V1 was Whisper's one-line hint)\nconst TRANSCRIBE_PROMPT = 'Emergency voice note sent to Tunisian Civil Protection during a flood. The speaker may use Tunisian Derja (Tunisian Arabic), French, English or a mix, often with rain, wind or panic in the background. Transcribe verbatim: keep Derja in Arabic script and French/English words in Latin script. Do not translate, summarise or correct grammar. Keep numbers, street names and landmarks exactly as spoken.';\n\nconst items = $input.all();\nconst results = [];\nfor (let i = 0; i < items.length; i++) {\n  const bin = items[i].binary && items[i].binary.data;\n  if (!bin) throw new Error('No audio binary found in field \"data\"');\n  const buffer = await this.helpers.getBinaryDataBuffer(i, 'data');\n  const mime = (bin.mimeType || '').startsWith('audio/') ? bin.mimeType : 'audio/ogg'; // Telegram voice notes are Ogg/Opus\n  results.push({\n    json: {\n      model: TRANSCRIBE_MODEL,\n      request_body: {\n        contents: [{ parts: [{ text: TRANSCRIBE_PROMPT }, { inline_data: { mime_type: mime, data: buffer.toString('base64') } }] }],\n      },\n    },\n    pairedItem: { item: i },\n  });\n}\nreturn results;"
+   },
+   "id": "43c27da2-270d-480f-a1bf-274309a9bb5a",
+   "name": "Build Gemini Request",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    440,
+    0
+   ]
+  },
+  {
+   "parameters": {
+    "method": "POST",
+    "url": "={{ 'https://generativelanguage.googleapis.com/v1beta/models/' + $json.model + ':generateContent' }}",
+    "authentication": "predefinedCredentialType",
+    "nodeCredentialType": "googlePalmApi",
+    "sendBody": true,
+    "specifyBody": "json",
+    "jsonBody": "={{ JSON.stringify($json.request_body) }}",
+    "options": {
+     "timeout": 45000
+    }
+   },
+   "id": "a7d28702-a7e8-45ac-bd16-f32f8709bba9",
+   "name": "Gemini Transcribe",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    660,
+    0
+   ],
+   "credentials": {
+    "googlePalmApi": {
+     "id": "Iv6cmEx1jRRgpWYT",
+     "name": "Google Gemini(PaLM) Api account"
+    }
+   }
+  },
+  {
+   "parameters": {
+    "jsCode": "// gemini-3.5-transcribe returns the text in parts[].audioTranscription.text (not parts[].text)\nconst parts = ($json.candidates && $json.candidates[0] && $json.candidates[0].content && $json.candidates[0].content.parts) || [];\nconst text = parts\n  .map((p) => (p.audioTranscription && p.audioTranscription.text) || p.text || '')\n  .join(' ')\n  .trim();\nif (!text) throw new Error('Gemini returned an empty transcript: call transcribe_voice_backup');\nreturn { json: { text, asr_engine: 'gemini-3.5-transcribe' } };"
+   },
+   "id": "a3d9e87b-568e-44f5-a4e8-be9aa529ae7a",
+   "name": "Parse Gemini Transcript",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    880,
+    0
+   ]
+  }
+ ],
+ "connections": {
+  "When called by the Distress Agent": {
+   "main": [
+    [
+     {
+      "node": "Download Voice",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Download Voice": {
+   "main": [
+    [
+     {
+      "node": "Build Gemini Request",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Build Gemini Request": {
+   "main": [
+    [
+     {
+      "node": "Gemini Transcribe",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Gemini Transcribe": {
+   "main": [
+    [
+     {
+      "node": "Parse Gemini Transcript",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  }
+ },
+ "active": false,
+ "settings": {
+  "executionOrder": "v1",
+  "callerPolicy": "workflowsFromSameOwner"
+ },
+ "pinData": {},
+ "tags": []
+}
